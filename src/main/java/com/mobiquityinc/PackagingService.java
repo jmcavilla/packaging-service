@@ -14,7 +14,6 @@ public class PackagingService {
 
 		
 		try {
-			System.out.println("PRUEBA");
 			Packer.pack("/Users/jcavilla/testcases.txt");
 		} catch (APIException e) {
 			// TODO Auto-generated catch block
