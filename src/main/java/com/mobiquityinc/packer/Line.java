@@ -48,5 +48,18 @@ public class Line {
 	public void setPackageList(List<Package> packageList) {
 		this.packageList = packageList;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Line [maxWeight=");
+		builder.append(maxWeight);
+		builder.append(", packageList=");
+		builder.append(packageList);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 	
 }

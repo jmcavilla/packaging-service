@@ -16,8 +16,12 @@ public class Packer {
 	private static final String INDEX = "index";
 	private static final String WEIGHT = "weight";
 	private static final String COST = "cost";
-	private static final String PACKAGE_REGEX = "\\((?<" + INDEX + ">\\d+)\\,(?<" + WEIGHT
+	private static final String LINE_REGEX = "\\((?<" + INDEX + ">\\d+)\\,(?<" + WEIGHT
 			+ ">\\d+(\\.\\d{1,2})?)\\,€(?<" + COST + ">\\d+(\\.\\d{1,2})?)\\)";
+//	private static final String WEIGHT_REGEX = "/(?<weight>\\d+)\\:(?<data>\\w+)/g";
+	private static final String WEIGHT_REGEX = "\\d*:\\d*";
+	
+
 
 	private Packer() {
 	}
@@ -32,12 +36,20 @@ public class Packer {
 	}
 
 
-	private static Line parseLine(String string) {
+	private static Line parseLine(String lineText) {
 		List<Package> packages = new ArrayList<>();
-		System.out.println(string);
+		System.out.println(lineText);
+		String[] parseLine = lineText.split(":");
+		String packageMaxWeight = "";
+		String text = "";
+		if(parseLine != null && parseLine.length > 0) {
+			packageMaxWeight = parseLine[0];
+			text = parseLine[1];
+			System.out.println(packageMaxWeight + " " + text);
+		}
 
-		Pattern p = Pattern.compile(PACKAGE_REGEX);
-		Matcher m = p.matcher(string);
+		Pattern p = Pattern.compile(LINE_REGEX);
+		Matcher m = p.matcher(text);
 		while (m.find()) {
 			//TODO: Prepare validations for the package
 
@@ -48,19 +60,27 @@ public class Packer {
 			packages.add(parsedPackage);
 
 		}
-		return null;
+		
+		
+		return new Line(Double.valueOf(packageMaxWeight), packages);
 	}
 	
 	private static List<Line> parsedInputFile(String inputPath) throws APIException {
         List<Line> lines = new ArrayList<>();
 
         try (FileInputStream inputStream = new FileInputStream(inputPath)) {
-            try (Scanner scanner = new Scanner(inputStream)) {
-                for (long lineId = 0; scanner.hasNext(); lineId++) {
-                    String line = scanner.nextLine();
-                    lines.add(parseLine(line));
-                }
+        	Scanner scanner = new Scanner(inputStream);
+        	
+        	
+            while(scanner.hasNext()) {
+                String line = scanner.nextLine();
+                lines.add(parseLine(line));
             }
+            for (Line line : lines) {
+				
+            	System.out.println(line.toString());
+			}
+            
         } catch (IOException e) {
             throw new APIException(e.getMessage(), e);
         }
