@@ -178,7 +178,7 @@ public class Packer {
 		} else {
 			for (Thing thing : thingsList) {
 				
-				//We check if the item it's already in the package, if it's not we can continue
+				//We check if the item is already in the package, if it's not we can continue
 				 
 				if (!base_package.getThings().contains(thing)) {
 					//Now we are checking if the mac weight is reached, if it's not we can keep adding other things
