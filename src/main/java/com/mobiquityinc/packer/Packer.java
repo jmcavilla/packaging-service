@@ -39,7 +39,7 @@ public class Packer {
 			int packageIndex = 1;
 			for (Package pack : packagesToSend) {
 				if(pack.getThings().isEmpty()){
-					System.out.println("Package " + packageIndex + ") None of the items could be puted in the package");					
+					System.out.println("Package " + packageIndex + ") None of the items could be add into the package");					
 				}else{
 					System.out.println("Package " + packageIndex+ ") " +pack.getThingsIndexNumbers());
 				}
