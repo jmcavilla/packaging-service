@@ -5,7 +5,7 @@ import java.util.List;
 public class Line {
 	
 	private Double maxWeight;
-	private List<Package> packageList;
+	private List<Thing> thingsList;
 
 	public Line() {
 		// TODO Auto-generated constructor stub
@@ -15,10 +15,10 @@ public class Line {
 	 * @param maxWeight
 	 * @param packageList
 	 */
-	public Line(Double maxWeight, List<Package> packageList) {
+	public Line(Double maxWeight, List<Thing> packageList) {
 		super();
 		this.maxWeight = maxWeight;
-		this.packageList = packageList;
+		this.thingsList = packageList;
 	}
 
 	/**
@@ -38,15 +38,15 @@ public class Line {
 	/**
 	 * @return the packageList
 	 */
-	public List<Package> getPackageList() {
-		return packageList;
+	public List<Thing> getThingList() {
+		return thingsList;
 	}
 
 	/**
 	 * @param packageList the packageList to set
 	 */
-	public void setPackageList(List<Package> packageList) {
-		this.packageList = packageList;
+	public void setThingList(List<Thing> packageList) {
+		this.thingsList = packageList;
 	}
 
 	@Override
@@ -54,8 +54,8 @@ public class Line {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Line [maxWeight=");
 		builder.append(maxWeight);
-		builder.append(", packageList=");
-		builder.append(packageList);
+		builder.append(", thingsList=");
+		builder.append(thingsList);
 		builder.append("]");
 		return builder.toString();
 	}
