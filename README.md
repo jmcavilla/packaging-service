@@ -42,6 +42,6 @@ Knowing that this is a combinatorial optimization problem (like the Knapsack pro
 
 ## Data Structure
 
-![UML Design](https://picasaweb.google.com/109134416379125023794/6723674838878171713#6723674841612848978)
+![UML Design](https://drive.google.com/file/d/1F1bXdkvYXPgNZnnxoTlYoC-UMOuzWcxl/view?usp=sharing)
 
 
